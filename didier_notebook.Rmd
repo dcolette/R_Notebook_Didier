@@ -16,11 +16,14 @@ cars <- read_sas("http://www.principlesofeconometrics.com/sas/cars.sas7bdat",
 
 ```{r}
 library(tidyverse)
+library(plotly)
 
-cars %>%
+plot <- cars %>%
  filter(MPG >= 28L & MPG <= 47L) %>%
  ggplot() +
  aes(x = MPG, y = ENG) +
  geom_point(size = 1L, colour = "#0c4c8a") +
  theme_minimal()
+
+ggplotly(plot)
 ```
