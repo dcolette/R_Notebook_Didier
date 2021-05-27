@@ -1,0 +1,26 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Workflow
+
+1. Get the data
+
+```{r}
+library(haven)
+cars <- read_sas("http://www.principlesofeconometrics.com/sas/cars.sas7bdat", 
+    NULL)
+```
+
+
+```{r}
+library(tidyverse)
+
+cars %>%
+ filter(MPG >= 28L & MPG <= 47L) %>%
+ ggplot() +
+ aes(x = MPG, y = ENG) +
+ geom_point(size = 1L, colour = "#0c4c8a") +
+ theme_minimal()
+```
